@@ -17,9 +17,9 @@ const copyLink = $("#copyLink");
 const previewLink = $("#previewLink");
 
 const defaults = {
-  to: "Dylan",
+  to: "Sophia",
   from: "Alexander",
-  date: "November 11, 2026",
+  date: "November 13, 2026",
   time: "7:00 PM",
   place: "Il Porcellino",
   dress: "Come exactly as you are",

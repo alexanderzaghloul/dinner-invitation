@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10281c">
+  <meta name="description" content="A very small environmental proposal made just for Katie.">
+  <meta property="og:title" content="A Green Flag for Katie">
+  <meta property="og:description" content="A small proposal from Alexander.">
+  <meta name="robots" content="noindex,nofollow">
+  <title>A Green Flag for Katie</title>
+  <style>
+    :root{
+      --ink:#10281c;--forest:#173f2a;--moss:#447a50;--lime:#d8ff70;
+      --cream:#f6f2e7;--paper:#fffdf5;--line:rgba(16,40,28,.18);--shadow:0 24px 70px rgba(10,35,22,.2)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+    button{font:inherit}
+    .gate{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:24px;background:
+      radial-gradient(circle at 20% 15%,rgba(216,255,112,.18),transparent 28%),
+      radial-gradient(circle at 80% 80%,rgba(91,151,91,.24),transparent 32%),var(--ink);color:var(--cream);transition:opacity .75s,visibility .75s}
+    .gate.open{opacity:0;visibility:hidden}
+    .scan{width:min(560px,100%);border:1px solid rgba(246,242,231,.22);border-radius:28px;padding:30px 24px 26px;box-shadow:0 30px 90px rgba(0,0,0,.25);background:rgba(255,255,255,.035);backdrop-filter:blur(12px)}
+    .scan-top{display:flex;align-items:center;gap:8px;margin-bottom:32px;color:rgba(246,242,231,.58);font:600 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 16px var(--lime)}
+    .scan h1{margin:0 0 12px;font-family:Georgia,serif;font-weight:400;font-size:clamp(42px,11vw,72px);line-height:.94;letter-spacing:-.045em}
+    .scan h1 em{color:var(--lime);font-weight:400}
+    .scan p{margin:0 0 28px;color:rgba(246,242,231,.72);line-height:1.65}
+    .open-btn,.yes-btn{border:0;border-radius:999px;background:var(--lime);color:var(--ink);font-weight:800;padding:16px 22px;cursor:pointer;box-shadow:0 12px 34px rgba(216,255,112,.18)}
+    .open-btn{width:100%;display:flex;align-items:center;justify-content:space-between}
+    .open-btn span{font-size:22px}
+    main{min-height:100vh}
+    .hero{position:relative;min-height:96svh;background:var(--forest);color:var(--cream);padding:24px 20px 54px;display:flex;flex-direction:column;overflow:hidden}
+    .hero:before,.hero:after{content:"";position:absolute;border-radius:55% 0 55% 0;background:rgba(216,255,112,.1);transform:rotate(24deg)}
+    .hero:before{width:420px;height:180px;right:-220px;top:14%}
+    .hero:after{width:500px;height:210px;left:-300px;bottom:8%}
+    .nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+    .mark{width:42px;height:42px;border:1px solid rgba(255,255,255,.28);border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif;font-size:20px;letter-spacing:0}
+    .hero-copy{position:relative;z-index:2;margin:auto 0;padding:70px 0 40px}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--lime);font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:32px;height:1px;background:currentColor}
+    .hero h1{max-width:880px;margin:20px 0 22px;font-family:Georgia,serif;font-weight:400;font-size:clamp(55px,13vw,110px);line-height:.88;letter-spacing:-.058em}
+    .hero h1 em{font-weight:400;color:var(--lime)}
+    .hero-lede{max-width:560px;margin:0;font-size:clamp(17px,4vw,22px);line-height:1.55;color:rgba(246,242,231,.76)}
+    .scroll{position:relative;z-index:2;display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(246,242,231,.58)}
+    .scroll i{display:block;width:56px;height:1px;background:var(--lime)}
+    .report{padding:84px 20px;background:var(--paper)}
+    .wrap{width:min(980px,100%);margin:auto}
+    .section-tag{margin:0 0 16px;color:var(--moss);font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    .report h2,.proposal h2{margin:0;font:400 clamp(40px,8vw,76px)/.98 Georgia,serif;letter-spacing:-.045em}
+    .checks{margin-top:48px;border-top:1px solid var(--line)}
+    .check{display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+    .check-num{font:700 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--moss)}
+    .check strong{font-size:clamp(16px,4vw,20px)}
+    .pass{padding:7px 11px;border-radius:999px;background:#e5f4df;color:#24633c;font-size:11px;font-weight:900;letter-spacing:.08em}
+    .result{margin-top:28px;padding:24px;border-radius:22px;background:var(--ink);color:var(--cream);display:flex;gap:18px;align-items:center;box-shadow:var(--shadow)}
+    .result-icon{flex:0 0 48px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--lime);color:var(--ink);font-size:24px}
+    .result small{display:block;margin-bottom:5px;color:var(--lime);font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .result p{margin:0;line-height:1.45}
+    .proposal{padding:84px 20px;background:var(--cream)}
+    .proposal-card{margin-top:44px;background:var(--paper);border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}
+    .proposal-head{padding:28px 24px;background:var(--lime);display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+    .proposal-head p{margin:0;font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+    .proposal-head span{font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace}
+    .details{margin:0;padding:0 24px}
+    .detail{display:grid;grid-template-columns:105px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--line)}
+    .detail dt{color:var(--moss);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+    .detail dd{margin:0;font-weight:700;line-height:1.35}
+    .proposal-note{margin:0;padding:28px 24px;font:italic 400 22px/1.45 Georgia,serif}
+    .method{display:none;margin:0 24px 24px;padding:22px;border-radius:18px;background:#edf2e7;line-height:1.65}
+    .method.show{display:block;animation:rise .35s ease both}
+    .actions{padding:0 24px 28px;display:grid;gap:12px}
+    .yes-btn{width:100%;font-size:16px;padding:17px 22px}
+    .why-btn{border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font-weight:750;padding:15px 20px;cursor:pointer}
+    footer{padding:34px 20px 44px;background:var(--ink);color:rgba(246,242,231,.62);display:flex;justify-content:space-between;gap:20px;font-size:11px;letter-spacing:.13em;text-transform:uppercase}
+    footer strong{color:var(--lime)}
+    .modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:rgba(9,28,18,.82);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:.35s}
+    .modal.show{opacity:1;visibility:visible}
+    .modal-card{width:min(520px,100%);padding:34px 24px;border-radius:28px;background:var(--paper);text-align:center;box-shadow:0 30px 100px rgba(0,0,0,.35);transform:translateY(18px);transition:.35s}
+    .modal.show .modal-card{transform:none}
+    .big-check{width:64px;height:64px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:var(--lime);font-size:30px}
+    .modal h2{margin:0 0 12px;font:400 42px/1 Georgia,serif;letter-spacing:-.04em}
+    .modal p{margin:0 auto 24px;max-width:360px;line-height:1.55;color:#4e6757}
+    .text-link{border:0;background:transparent;color:var(--moss);font-weight:800;padding:12px;cursor:pointer}
+    .leaf{position:fixed;z-index:60;pointer-events:none;color:var(--lime);font-size:18px;animation:fly 1.5s ease-out forwards}
+    @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    @keyframes fly{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+    @media(min-width:700px){
+      .hero{padding:34px 48px 62px}.report,.proposal{padding:110px 48px}
+      .proposal-card{margin-top:58px}.proposal-head{padding:34px 38px}.details{padding:0 38px}
+      .detail{grid-template-columns:160px 1fr}.proposal-note{padding:34px 38px}.actions{padding:0 38px 36px;grid-template-columns:1fr 1fr}
+      .method{margin:0 38px 28px}footer{padding:38px 48px}
+    }
+  </style>
+</head>
+<body>
+  <section class="gate" id="gate" aria-label="Open Katie's invitation">
+    <div class="scan">
+      <div class="scan-top"><span class="dot"></span> environmental compatibility scan</div>
+      <h1>One potential<br><em>green flag.</em></h1>
+      <p>Made specifically for Katie. No recycled lines, no questionable emissions, and absolutely no Trump supporters.</p>
+      <button class="open-btn" id="openBtn" type="button">View the findings <span>↗</span></button>
+    </div>
+  </section>
+
+  <main>
+    <section class="hero">
+      <nav class="nav"><div class="mark">K</div><span>A small proposal · 2026</span></nav>
+      <div class="hero-copy">
+        <p class="eyebrow">For Katie</p>
+        <h1>Let’s make the world<br>slightly <em>better.</em></h1>
+        <p class="hero-lede">Starting with dinner. You bring your thoughts on the environmental state of the world; I’ll bring good conversation and a plan.</p>
+      </div>
+      <div class="scroll"><i></i><span>review the evidence</span></div>
+    </section>
+
+    <section class="report">
+      <div class="wrap">
+        <p class="section-tag">01 · Compatibility report</p>
+        <h2>The evidence looks<br>promising.</h2>
+        <div class="checks">
+          <div class="check"><span class="check-num">01</span><strong>Not a Trump supporter</strong><span class="pass">VERIFIED</span></div>
+          <div class="check"><span class="check-num">02</span><strong>Prepared to discuss the planet</strong><span class="pass">VERIFIED</span></div>
+          <div class="check"><span class="check-num">03</span><strong>Think Katie is beautiful</strong><span class="pass">VERY</span></div>
+        </div>
+        <div class="result">
+          <div class="result-icon">✓</div>
+          <div><small>Conclusion</small><p>Matching with you was, scientifically speaking, a green flag.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal">
+      <div class="wrap">
+        <p class="section-tag">02 · The proposal</p>
+        <h2>Dinner, debate,<br>and zero small talk.</h2>
+        <article class="proposal-card">
+          <div class="proposal-head"><p>Invitation for Katie</p><span>STATUS: PENDING</span></div>
+          <dl class="details">
+            <div class="detail"><dt>When</dt><dd>You pick the night</dd></div>
+            <div class="detail"><dt>Where</dt><dd>Somewhere with good food and no fluorescent lighting</dd></div>
+            <div class="detail"><dt>Agenda</dt><dd>Climate, politics, and whatever makes us forget to check our phones</dd></div>
+            <div class="detail"><dt>Expected result</dt><dd>A second date, pending peer review</dd></div>
+          </dl>
+          <p class="proposal-note">“I could’ve sent another Hinge message, but that didn’t feel like enough for you.”</p>
+          <div class="method" id="method"><strong>Methodology:</strong> one dinner, two people, honest conversation, and a sample size large enough to justify doing it again.</div>
+          <div class="actions">
+            <button class="yes-btn" id="yesBtn" type="button">That’s a green flag →</button>
+            <button class="why-btn" id="whyBtn" type="button">Show me the methodology</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer><span>Made by <strong>Alexander</strong></span><span>Only for <strong>Katie</strong></span></footer>
+  </main>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <div class="big-check">✓</div>
+      <h2>Perfect.</h2>
+      <p>Now we just need a night. Text Alexander and make this proposal official.</p>
+      <button class="yes-btn" id="textBtn" type="button">Text Alexander</button>
+      <button class="text-link" id="closeBtn" type="button">Back to the invitation</button>
+    </div>
+  </div>
+
+  <script>
+    const gate=document.getElementById('gate');
+    const openBtn=document.getElementById('openBtn');
+    const whyBtn=document.getElementById('whyBtn');
+    const method=document.getElementById('method');
+    const yesBtn=document.getElementById('yesBtn');
+    const modal=document.getElementById('modal');
+    const closeBtn=document.getElementById('closeBtn');
+    const textBtn=document.getElementById('textBtn');
+
+    openBtn.addEventListener('click',function(){gate.classList.add('open');document.body.style.overflow='auto'});
+    whyBtn.addEventListener('click',function(){
+      method.classList.toggle('show');
+      whyBtn.textContent=method.classList.contains('show')?'Okay, the research checks out':'Show me the methodology';
+    });
+    function leaves(){
+      for(let i=0;i<28;i++){
+        const leaf=document.createElement('span');
+        leaf.className='leaf';leaf.textContent=i%3===0?'✦':'❧';
+        leaf.style.left='50vw';leaf.style.top='50vh';
+        const angle=Math.PI*2*i/28;const distance=90+Math.random()*310;
+        leaf.style.setProperty('--x',Math.cos(angle)*distance+'px');
+        leaf.style.setProperty('--y',Math.sin(angle)*distance+'px');
+        leaf.style.setProperty('--r',Math.random()*540+'deg');
+        document.body.appendChild(leaf);setTimeout(function(){leaf.remove()},1600);
+      }
+    }
+    yesBtn.addEventListener('click',function(){modal.classList.add('show');modal.setAttribute('aria-hidden','false');leaves()});
+    closeBtn.addEventListener('click',function(){modal.classList.remove('show');modal.setAttribute('aria-hidden','true')});
+    textBtn.addEventListener('click',async function(){
+      const message='Okay, this was a green flag 🌿';
+      if(navigator.share){try{await navigator.share({text:message});return}catch(e){if(e.name==='AbortError')return}}
+      try{await navigator.clipboard.writeText(message);textBtn.textContent='Copied — send it to Alexander'}catch(e){textBtn.textContent=message}
+    });
+  </script>
+</body>
+</html>
